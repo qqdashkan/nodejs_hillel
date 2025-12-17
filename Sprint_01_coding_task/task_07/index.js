@@ -14,6 +14,5 @@
 // ' f oo ' -> false
 
 export default (str) => {
-  const arr = str.trim().split('');
-  return arr.some((char) => char === ' ') ? false : true;
+  return str.trim().includes(' ') ? false : true;
 };

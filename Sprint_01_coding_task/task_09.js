@@ -4,7 +4,7 @@
 
 function clearArray(array) {
   return array.filter(
-    (elem) => Number.isInteger(elem) || typeof elem === 'boolean'
+    (elem) => typeof elem === 'number' || typeof elem === 'boolean'
   );
 }
 

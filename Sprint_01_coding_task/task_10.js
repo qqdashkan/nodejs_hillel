@@ -9,5 +9,6 @@
 // [1] => [1]
 
 export default (array) => {
-  return array.reverse();
+  const result = [...array];
+  return result.reverse();
 };

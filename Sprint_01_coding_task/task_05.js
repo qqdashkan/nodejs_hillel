@@ -4,10 +4,9 @@
 // Якщо передано порожній рядок — повертає порожній рядок.
 
 export default function randomSymbol(str) {
-  const arr = str.trim().split('');
-  if (arr.every((char) => char === ' ')) return str;
+  if (str.trim() === '') return str;
 
-  const unique = [...new Set(arr)];
+  const unique = [...new Set(str)];
   const index = Math.floor(Math.random() * unique.length);
   return unique[index];
 }

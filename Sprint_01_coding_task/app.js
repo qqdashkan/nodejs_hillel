@@ -23,19 +23,19 @@ import prepareString from './task_04.js';
 
 // Task 05
 import randomSymbol from './task_05.js';
-//console.log(randomSymbol('    I love C++ <3   '));
+//console.log(randomSymbol('    My name is Daria <3   '));
 
 // Task 06
 import integerPart from './task_06.js';
-//console.log(integerPart(13.55));
+//console.log(integerPart(-13.55));
 
 // Task 07
 import task_07 from './task_07/index.js';
-//console.log(task_07('abcdefjklsjdududdd   '));
+//console.log(task_07('abcdefjk   lsjdududdd   '));
 
 // Task 08
 import { checkStr } from './task_08/index.js';
-//console.log(checkStr('abcdefjQlsjqududdd   '));
+//console.log(checkStr(' Q   '));
 
 // Task 09
 import clearArray from './task_09.js';
@@ -43,4 +43,6 @@ import clearArray from './task_09.js';
 
 // Task 10
 import task_10 from './task_10.js';
-//console.log(task_10([55, '896', true, 'hello', [0, 4]]));
+const arr = [55, '896', true, 'hello', [0, 4]];
+//console.log(task_10(arr));
+//console.log(arr);

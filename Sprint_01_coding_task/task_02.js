@@ -8,10 +8,6 @@
 
 // Якщо буде потрібно додавати додаткові перевірки — це буде вказано в умові.
 
-export default (...args) => {
-  if (args[0] === args[1] && args[1] === args[2]) {
-    const index = Math.floor(Math.random() * args.length);
-    return args[index];
-  }
-  return Math.max(...args);
+export default (n1, n2, n3) => {
+  return Math.max(n1, n2, n3);
 };
