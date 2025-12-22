@@ -9,7 +9,7 @@ import { parse } from 'csv-parse/sync';
 export async function task_02(pathToFile) {
   try {
     const data = await readFile(pathToFile, 'utf8');
-    const result = parse(data, { columns: true });
+    const result = parse(data, { columns: true, delimiter: ';' });
     return result;
   } catch (error) {
     console.log(error.message);

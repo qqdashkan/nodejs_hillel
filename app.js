@@ -3,9 +3,9 @@ import { task_01 } from './task_01.js';
 
 // Для зручної роботи коментуйте код який не використовуєте.
 
-console.log(await task_01(path.join('csv_files', 'sci_fi_1.csv')));
+// console.log(await task_01(path.join('csv_files', 'sci_fi_1.csv')));
 
-// console.log(await task_02(path.join('csv_files', 'sci_fi_2.csv')));
+console.log(await task_02(path.join('csv_files', 'sci_fi_2.csv')));
 
 // console.log(await task_03(path.join('csv_files', 'sci_fi_3.csv')));
 
