@@ -1,8 +1,5 @@
 // Task 01
 
-import { readFile } from 'fs/promises';
-import { parse } from 'csv-parse/sync';
-
 // Напишіть модуль який отримує аргумент - шлях до файлу files/sci_fi_1.csv і повертає масив об'єктів виду.
 // В цьому CSV файлів не буде помилок.
 // Оскільки ми відпрацьовуємо роботу с пакетом csv-parse то перевіряти існування файла - не треба.
@@ -16,10 +13,15 @@ import { parse } from 'csv-parse/sync';
 //     ...
 // ]
 
+import { readFile } from 'fs/promises';
+import { parse } from 'csv-parse/sync';
+
 export async function task_01(pathToFile) {
   try {
     const data = await readFile(pathToFile, 'utf8');
-    const result = parse(data, {});
+    const result = parse(data, {
+      columns: true,
+    });
     return result;
   } catch (error) {
     console.log(error.message);
