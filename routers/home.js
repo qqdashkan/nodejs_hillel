@@ -2,8 +2,7 @@ import { Router } from 'express';
 
 import {
   getGoods,
-  getRandomGoods,
-  getModifiedTitle,
+  getRandomGoodsByCategory,
 } from '../utilities/index.js';
 
 const router = Router();
@@ -11,12 +10,14 @@ const router = Router();
 router.get('/', async (req, res, next) => {
   try {
     const data = await getGoods();
-    const sections = Object.entries(data).map(([category, items]) => ({
-      category: getModifiedTitle(category),
-      items: getRandomGoods(items, 4),
-    }));
 
-    res.render('main', { sections, file: 'goods.json' });
+    res.render('main', {
+      items: {
+        phones: getRandomGoodsByCategory(data, 4, 'phones'),
+        laptops: getRandomGoodsByCategory(data, 4, 'laptops'),
+      },
+      file: 'goods.json',
+    });
   } catch (err) {
     next(err);
   }

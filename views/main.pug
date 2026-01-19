@@ -5,10 +5,9 @@ block content
 
     .row
       .col-12
-      each section in sections
-        h1.text-center.mb-4= section.category
-
-        each item in section.items
+      each val, key in items
+        h1.text-center.mb-4= key
+        each item in val
           .col-md-3.mb-4
             .card.h-100.p-2
               img.card-img-top(src=item.image alt=item.title)

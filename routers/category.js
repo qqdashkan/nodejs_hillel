@@ -1,12 +1,17 @@
 import { Router } from 'express';
-import { getGoods, getModifiedTitle } from '../utilities/index.js';
+import {
+  getGoods,
+  getCategories,
+  getModifiedTitle,
+} from '../utilities/index.js';
 
 const router = Router();
 
 async function resolveCategory(req, res, next, category) {
   try {
     const data = await getGoods();
-    if (!Object.hasOwn(data, category)) {
+
+    if (!data.some((elem) => elem.category === category)) {
       return next({
         status: 404,
         message: 'Category not found',
@@ -21,8 +26,9 @@ async function resolveCategory(req, res, next, category) {
 router.get('/', async (req, res, next) => {
   try {
     const data = await getGoods();
+
     res.render('category', {
-      categories: Object.keys(data),
+      categories: getCategories(data),
       file: 'goods.json',
     });
   } catch (err) {
@@ -39,7 +45,7 @@ router.get('/:category', async (req, res, next) => {
 
     res.render('category_single', {
       name: getModifiedTitle(category),
-      items: data[category],
+      items: data.filter((elem) => elem.category === category),
       file: 'goods.json',
     });
   } catch (err) {

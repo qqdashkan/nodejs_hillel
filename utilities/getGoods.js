@@ -7,21 +7,13 @@ export async function getGoods() {
     getDirname(import.meta.url),
     '..',
     'data',
-    'goods.json'
+    'goods.json',
   );
-  const data = JSON.parse(await readFile(filePath, 'utf-8'));
+  const data = await readFile(filePath, 'utf-8');
 
   if (!data) {
     throw new Error('Data Not Found');
   }
 
-  const formattedData = data.reduce((prev, curr) => {
-    if (!prev[curr.category]) {
-      prev[curr.category] = [];
-    }
-    prev[curr.category].push(curr);
-    return prev;
-  }, {});
-
-  return formattedData;
+  return JSON.parse(data);
 }
