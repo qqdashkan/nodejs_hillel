@@ -1,0 +1,26 @@
+[
+  {
+    "username": "Alex",
+    "password": "99fs",
+    "role": "user",
+    "email": "alex@mail.ua"
+  },
+  {
+    "username": "Daria",
+    "password": "qwerty",
+    "role": "user",
+    "email": "daria@mail.ua"
+  },
+  {
+    "username": "Oleg",
+    "password": "admin",
+    "role": "admin",
+    "email": "admin@mail.ua"
+  },
+  {
+    "username": "Igor",
+    "password": "12345678",
+    "role": "user",
+    "email": "igor@mail.ua"
+  }
+]
