@@ -3,24 +3,24 @@
     "username": "Alex",
     "password": "99fs",
     "role": "user",
-    "email": "alex@mail.ua"
+    "email": "alex@email.ua"
   },
   {
     "username": "Daria",
     "password": "qwerty",
     "role": "user",
-    "email": "daria@mail.ua"
+    "email": "daria@email.ua"
   },
   {
     "username": "Oleg",
     "password": "admin",
     "role": "admin",
-    "email": "admin@mail.ua"
+    "email": "admin@email.ua"
   },
   {
     "username": "Igor",
     "password": "12345678",
     "role": "user",
-    "email": "igor@mail.ua"
+    "email": "igor@example.ua"
   }
 ]

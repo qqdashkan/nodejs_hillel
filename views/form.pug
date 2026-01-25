@@ -1,0 +1,15 @@
+extends layout
+
+block content
+  header.header
+    if error
+      p(style='color: red;')= error
+
+    form.form(action="/login" method="post")
+      h4.form-title Form
+      br
+      input.form__input(type="text" name="username" value='Daria' placeholder="Name" minlength="4")
+      input.form__input(type="email" name="email" placeholder="Email" value='daria@example.com')
+      button.button(type="submit")
+        | Send 
+        i.fas.fa-arrow-right
