@@ -11,13 +11,17 @@ html
   body
     nav
       a(href='/') Home
-      a(href='/page') Protected Page
-      a(href='/page') About
+      a(href='/about') About
+      if user
+        a(href='/only-users') Protected Page
+        if user.role === 'admin'
+          a(href='/admin') Admin Page
       .user-info
-        if username
-          span Welcome, #{username}! 
+        if user
+          span Welcome, #{user.username}. Email: #{user.email} - Role: #{user.role} / 
           a(href='/logout') Logout
         else
+          a(href='/register') Create
           a(href='/login') Login
     
     block content

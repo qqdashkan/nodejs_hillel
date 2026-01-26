@@ -1,0 +1,16 @@
+extends layout
+
+block content
+  header.header
+    if error
+      p(style='color: red;')= error
+
+    form.form(action="/register" method="post")
+      h4.form-title Registration
+      br
+      input.form__input(type="text" name="username" value='' placeholder="Name" minlength="4")
+      input.form__input(type="email" name="email" placeholder="Email" value='')
+      input.form__input(type="password" name="password" placeholder="Password" value='')
+      button.button(type="submit")
+        | Send 
+        i.fas.fa-arrow-right

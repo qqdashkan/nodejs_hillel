@@ -7,7 +7,7 @@ export async function getUsers() {
   const data = await readFile(filePath, 'utf-8');
 
   if (!data) {
-    throw new Error('Data Not Found');
+    throw new Error('DATA_NOT_FOUND');
   }
 
   return JSON.parse(data);

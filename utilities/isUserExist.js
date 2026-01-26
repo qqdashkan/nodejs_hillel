@@ -4,7 +4,7 @@ export async function isUserExist(username, email) {
   const data = await getUsers();
 
   if (!data) {
-    throw new Error('Data Not Found');
+    throw new Error('DATA_NOT_FOUND');
   }
 
   return data.find(
