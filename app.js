@@ -1,19 +1,67 @@
-import express from 'express';
 import dotenv from 'dotenv';
-
-import { errorHandler } from './middlewares/errorHandler';
-
 dotenv.config();
-const app = express();
 
-const PORT = process.env.PORT || 3500;
+import { MongoClient } from 'mongodb';
+import {
+  getBooksCollection,
+  getMigrationsCollection,
+} from './db/collection.js';
+import { setClient } from './db/db.js';
 
-app.get('/', (req, res) => {
-  res.status(200).send('Hello User');
-});
+import { fileURLToPath } from 'url';
+import { dirname, join } from 'path';
+import { readFile } from 'fs/promises';
 
-app.use(errorHandler);
+const uri = process.env.MONGO_URI;
+const client = new MongoClient(uri);
 
-app.listen(PORT, () =>
-  console.log(`✅ Server was open on port http://localhost:${PORT}`),
-);
+const _dirname = dirname(fileURLToPath(import.meta.url));
+const filePath = join(_dirname, 'books.json');
+
+async function run() {
+  try {
+    await client.connect();
+    setClient(client);
+    console.log('✅ You successfully connected to MongoDB!');
+
+    await getAllBooks();
+    await getCountDocuments();
+  } finally {
+    await client.close();
+  }
+}
+run().catch(console.dir);
+
+async function getAllBooks() {
+  const cursor = await getBooksCollection().find();
+  const data = await cursor.toArray();
+}
+
+async function getCountDocuments() {
+  const collection = await getBooksCollection();
+  const res = await collection.countDocuments();
+  console.log(res);
+
+  if (!res) {
+    const books = await readFile(filePath, 'utf-8');
+    console.log(books);
+    await collection.insertMany(JSON.parse(books));
+    await saveUpdates();
+  } else {
+    console.log(`Data already exist`);
+    return res;
+  }
+}
+
+async function saveUpdates() {
+  const collection = await getMigrationsCollection();
+  const booksCollection = await getCountDocuments();
+
+  await collection.insertOne({
+    file_name: 'books.json',
+    count: booksCollection,
+    updatedAt: new Date(),
+  });
+
+  console.log(`Document was updated`);
+}
