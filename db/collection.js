@@ -1,7 +1,7 @@
 import { getDb } from './db.js';
 
-let COLLECTION_BOOKS;
-let COLLECTION_MIGRATION;
+let COLLECTION_BOOKS = null;
+let COLLECTION_MIGRATION = null;
 
 export function getBooksCollection() {
   if (!COLLECTION_BOOKS) {
